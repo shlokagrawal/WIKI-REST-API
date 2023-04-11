@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const ejs = require('ejs');
 const mongoose = require('mongoose');
+require('dotenv').config()
 
 const app = express();
 
@@ -12,7 +13,7 @@ app.use(express.static('public'));
 // Database initialization
 main().catch(err => console.log(err));
 async function main() {
-    await mongoose.connect('mongodb+srv://shlokagrawal:7020751763@trials.i0lekjk.mongodb.net/wikidb?retryWrites=true&w=majority');
+    await mongoose.connect(process.env.DATABASE);
     console.log("Database Connected Successfully!");
 }
 
